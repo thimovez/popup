@@ -9,7 +9,7 @@ function popup() {
         let count = countClick++;
         count < 2 ? popup.style.display = 'block' : popup.style.display = 'none';
     });
-    /** При клике на оверлей окно скрывается, а счетчик заново обнуляется,
+    /**При клике на оверлей окно скрывается, а счетчик заново обнуляется,
     потому что пользователь мог нажать на оверлей случайно **/
     overlay.addEventListener('click', () => {
         popup.style.display = 'none';
