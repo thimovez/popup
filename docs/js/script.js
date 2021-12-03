@@ -1,37 +1,30 @@
-function popup() {
-    const message = {
-        succes: 'Спасибо, скоро мы с вами свяжемся',
-        failure: 'Что-то пошло не так...'
-    };
-    const popupButton = document.querySelector('.addToBasket'),
-        popup = document.querySelector('.popup'),
-        overlay = document.querySelector('.overlay'),
-        sendNumButton = document.querySelector('.popup__button'),
-        popupForm = document.querySelector('.popup__wrapper'),
-        close = document.querySelector('.close');
-    //Окно будет отображаться лишь один раз после клика "Добавить в корзину"
+//Закрытие окна
+function closePopup() {
+    const popup = document.querySelector('.popup'),
+    close = document.querySelector('.close');
+
+    close.addEventListener('click', () => {
+        popup.classList.toggle("hide__popup");
+    });
+}
+
+function openPopup() {
+    const popup = document.querySelector('.popup'),
+    // overlay = document.querySelector('.overlay'),
+    popupButton = document.querySelector('.addToBasket');
     let countClick = 1;
+    //Окно будет отображаться лишь один раз после клика "Добавить в корзину"
     popupButton.addEventListener('click', () => {
         let count = countClick++;
-        count < 2 ? popup.style.display = 'block' : popup.style.display = 'none';
+        count < 2 ? popup.classList.toggle("show__popup") : popup.classList.toggle("hide__popup");
     });
     /**При клике на оверлей окно скрывается, а счетчик заново обнуляется,
     потому что пользователь мог нажать на оверлей случайно **/
-    overlay.addEventListener('click', () => {
-        popup.style.display = 'none';
-        countClick = 1;
-    });
-    //Закрытие окна
-    close.addEventListener('click', () => {
-        popup.style.display = 'none';
-    });
-    //Сообщение при отравке номера телефона
-    sendNumButton.addEventListener('submit', () => {
-        popupForm.style.display = 'none';
-        const thankYou = document.createElement('h1');
-
-    });
-
+    // overlay.addEventListener('click', () => {
+    //     popup.style.display = 'none';
+    //     countClick = 1;
+    // });
 }
 
-popup();
+openPopup();
+closePopup();
