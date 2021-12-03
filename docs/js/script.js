@@ -4,7 +4,7 @@ function closePopup() {
     close = document.querySelector('.close');
 
     close.addEventListener('click', () => {
-        popup.classList.toggle(".hide__popup");
+        popup.classList.remove("show__popup");
     });
 }
 //Открытие окна
@@ -16,7 +16,7 @@ function openPopup() {
     //Окно будет отображаться лишь один раз после клика "Добавить в корзину"
     popupButton.addEventListener('click', () => {
         let count = countClick++;
-        count < 2 ? popup.classList.toggle(".show__popup") : popup.classList.toggle(".hide__popup");
+        count < 2 ? popup.classList.add("show__popup") : popup.classList.remove("show__popup");
     });
     /**При клике на оверлей окно скрывается, а счетчик заново обнуляется,
     потому что пользователь мог нажать на оверлей случайно **/
