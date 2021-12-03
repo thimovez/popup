@@ -32,11 +32,40 @@ function thankYou() {
         succes: 'Спасибо, скоро мы с вами свяжемся',
         failure: 'Что-то пошло не так...'
     }
-    sendMessage.addEventListener('submit', () => {
+    sendMessage.addEventListener('submit', (e) => {
+        e.preventDefault();
         console.log(succes)
+    });
+}
+
+
+//Валидация формы
+const popupPhone = document.querySelector('.popup__phone');
+const message = document.querySelector('.message');
+// const sendMessage = document.querySelector('.popup__button');
+function validationNum() {
+    popupPhone.addEventListener('keyup', function(e) {
+        let number = this.value.length;
+        let onlyNum = /^\d+$/;
+        let timerPhone = setInterval(() => {
+            if (number <= 3) {
+                message.style.display = 'block';
+                if (!onlyNum) {
+                    message.style.display = 'block';
+                }
+            } else {
+                message.style.display = 'none';
+            }
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 4000);
+        });
+        // остановить вывод текста
+        setTimeout(() => { clearInterval(timerPhone); });
     });
 }
 
 openPopup();
 closePopup();
 thankYou();
+validationNum();
